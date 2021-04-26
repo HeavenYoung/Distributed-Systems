@@ -1,0 +1,43 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package com.yangtian.matrix;
+
+message Matrix {
+  message Row {
+    repeated int32 element = 1;
+  }
+  repeated Row row = 1;
+}
+
+message MatrixRequest {
+  Matrix a = 1;
+  Matrix b = 2;
+}
+
+message MatrixResponse {
+
+  Matrix c = 1;
+}
+
+//message MultiplyRequest {
+//  Matrix a = 1;
+//  Matrix b = 2;
+//}
+//
+//message MultiplyResponse {
+//  Matrix c = 1;
+//}
+//
+//message AddRequest {
+//  Matrix a = 1;
+//  Matrix b = 2;
+//}
+//
+//message AddResponse {
+// Matrix c = 1;
+//}
+
+service MatrixService {
+  rpc multiplyBlock(MatrixRequest) returns (MatrixResponse) {};
+  rpc addBlock(MatrixRequest) returns (MatrixResponse) {};
+}
